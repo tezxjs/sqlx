@@ -1,0 +1,45 @@
+{
+  "name": "tezx-mysql",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TezX is a high-performance, lightweight JavaScript framework designed for speed, scalability, and flexibility. It enables efficient routing, middleware management, and static file serving with minimal configuration. Fully compatible with Node.js, Deno, and Bun.",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs --removeComments",
+    "build:esm": "tsc --module ESNext --outDir dist --removeComments",
+    "build:dts": "tsc --module ESNext --outDir dist --declaration --emitDeclarationOnly",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:dts",
+    "start": "bun dist/index.js",
+    "pk": "pkgroll --clean-dist --output-exports named",
+    "dev": "bun run --hot --watch index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tezxjs/tezx-app-example"
+  },
+  "keywords": [],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tezxjs/tezx-app-example"
+  },
+  "homepage": "https://github.com/tezxjs/tezx-app-example",
+  "dependencies": {
+    "@tezx/session": "^1.0.2",
+    "@types/deno": "^2.3.0",
+    "mysql2": "^3.14.1",
+    "pkgroll": "^2.13.1",
+    "tezx": "^3.0.5-beta",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.14"
+  }
+}

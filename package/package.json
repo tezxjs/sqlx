@@ -1,0 +1,66 @@
+{
+    "name": "@tezx/sqlx",
+    "version": "1.0.0",
+    "description": "A universal SQL query builder for Node.js, Bun, and Deno with TypeScript support.",
+    "type": "module",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "typings": "index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./index.js",
+            "types": "./index.d.ts",
+            "require": "./cjs/index.js"
+        },
+        "./mysql": {
+            "import": "./mysql/index.js",
+            "require": "./cjs/mysql/index.js",
+            "types": "./mysql/index.d.ts"
+        }
+    },
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc -w",
+        "test": "jest --passWithNoTests",
+        "lint": "eslint . --ext .ts,.tsx",
+        "prepare": "npm run build",
+        "bun": "bun run src/index.ts",
+        "deno": "deno run --allow-net src/index.ts"
+    },
+    "keywords": [
+        "sql",
+        "postgresql",
+        "mysql",
+        "query-builder",
+        "typescript",
+        "sqlx",
+        "tezx",
+        "universal",
+        "bun",
+        "deno"
+    ],
+    "author": "SRAKIB17",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tezx/sqlx.git"
+    },
+    "bugs": {
+        "url": "https://github.com/tezx/sqlx/issues"
+    },
+    "homepage": "https://github.com/tezx/sqlx#readme",
+    "dependencies": {
+        "pg": "^8.12.0",
+        "mysql2": "^3.9.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "typescript": "^5.6.0",
+        "ts-node": "^10.9.2",
+        "jest": "^29.7.0",
+        "@types/jest": "^29.5.12",
+        "eslint": "^9.9.0",
+        "@typescript-eslint/parser": "^7.18.0",
+        "@typescript-eslint/eslint-plugin": "^7.18.0"
+    }
+}
