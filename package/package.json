@@ -1,6 +1,6 @@
 {
     "name": "@tezx/sqlx",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A universal SQL query builder for Node.js, Bun, and Deno with TypeScript support.",
     "type": "module",
     "main": "index.js",

@@ -119,7 +119,7 @@ export function parseJoins(joins) {
     if (!joins)
         return "";
     if (typeof joins === "string") {
-        return joins.trim();
+        return ` ${joins}`;
     }
     let out = "";
     for (let i = 0; i < joins.length; i++) {
@@ -132,5 +132,5 @@ export function parseJoins(joins) {
         }
         out += ` ${type || "JOIN"} ${table} ON ${on}`;
     }
-    return out.trim();
+    return out;
 }
