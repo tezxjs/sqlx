@@ -1,3 +1,4 @@
+import { escape } from "mysql2"
 import { condition } from "./src/mysql/index.js"
 console.log(condition({
     test: 34,
@@ -11,3 +12,5 @@ console.log(condition({
         }
     }
 }))
+
+console.log(escape.toString())

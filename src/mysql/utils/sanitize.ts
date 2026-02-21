@@ -8,41 +8,42 @@ export function sanitize(input: any): string {
   return escape(input);
 }
 
+
+
+function escStr(str: string) {
+  let s = "'";
+  for (let i = 0; i < str.length; i++) {
+    let c = str.charCodeAt(i);
+    switch (c) {
+      case 0: s += '\\0'; break;
+      case 8: s += '\\b'; break;
+      case 9: s += '\\t'; break;
+      case 26: s += '\\z'; break;
+      case 10: s += '\\n'; break;
+      case 13: s += '\\r'; break;
+      case 34: s += '\\"'; break;
+      case 39: s += "\\'"; break;
+      case 92: s += '\\\\'; break;
+      case 37: s += '\\%'; break;
+      default: s += String.fromCharCode(c);
+    }
+  }
+  return s + "'";
+}
 /**
  * Escape special characters in a string to prevent SQL injection.
  * @param value - The value to be escaped.
  * @returns The escaped string.
  */
-
 export function escape(val: any) {
   if (val == null) return 'NULL';
 
   const t = typeof val;
   if (t === 'number') return '' + val;
-  if (t === 'boolean') return val ? '1' : '0';
+  if (t === 'boolean') return val ? 'true' : 'false';
 
-  function escStr(str: string) {
-    let s = "'";
-    for (let i = 0; i < str.length; i++) {
-      let c = str.charCodeAt(i);
-      switch (c) {
-        case 0: s += '\\0'; break;
-        case 8: s += '\\b'; break;
-        case 9: s += '\\t'; break;
-        case 26: s += '\\z'; break;
-        case 10: s += '\\n'; break;
-        case 13: s += '\\r'; break;
-        case 34: s += '\\"'; break;
-        case 39: s += "\\'"; break;
-        case 92: s += '\\\\'; break;
-        case 37: s += '\\%'; break;
-        default: s += String.fromCharCode(c);
-      }
-    }
-    return s + "'";
-  }
+
   if (t === 'string') return escStr(val)
-  // default: s += String.fromCharCode(c);
 
   if (t === 'object') {
     if (val instanceof Date) return `'${val.toISOString()}'`;
